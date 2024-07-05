@@ -129,8 +129,10 @@ plt.xlabel('Months',fontsize=14)
 plt.title('Average Monthly Sales',fontsize=16)
 plt.savefig('avg_monthly_sales.png')
 plt.grid()
+```
+<img src="images/SalesForecasting_4.1.png" width="600" /> 
 
-
+```python
 #Average Weekly Sales Store wise
 plt.figure(figsize=(20,8))
 sns.barplot(x='Store',y='Weekly_Sales',data=data)
@@ -140,17 +142,24 @@ plt.ylabel('Sales', fontsize=16)
 plt.xlabel('Store', fontsize=16)
 plt.savefig('avg_sales_store.png')
 plt.show()
+```
+<img src="images/SalesForecasting_4.2.png" width="600" />
 
+```python
 # Average sales per department
 plt.figure(figsize=(20,8))
 sns.barplot(x='Dept',y='Weekly_Sales',data=data)
 plt.grid()
 plt.title('Average Sales per Department', fontsize=18)
 plt.ylabel('Sales', fontsize=16)
-plt.xlabel('Department', fontsize=16)
+plt.xlabel('Department', fon![Uploading SalesForecasting_4.1.png…]()
+tsize=16)
 plt.savefig('avg_sales_dept.png')
 plt.show()
+```
+<img src="images/SalesForecasting_4.3.png" width="600" /> 
 
+```python
 # Effect of Temperature on Sales
 plt.figure(figsize=(10,8))
 sns.distplot(data['Temperature'])
@@ -160,4 +169,25 @@ plt.ylabel('Density',fontsize=14)
 plt.savefig('effect_of_temp.png')
 plt.show()
 ```
-    <Figure size 432x288 with 0 Axes>
+<img src="images/SalesForecasting_4.4.png" width="500" /> 
+
+```python
+# Holiday Distribution
+plt.figure(figsize=(8,8))
+plt.pie(data['IsHoliday'].value_counts(),labels=['No Holiday','Holiday'],autopct='%0.2f%%')
+plt.title("Pie chart distribution",fontsize=14)
+plt.legend()
+plt.savefig('holiday_distribution.png')
+plt.show()
+```
+<img src="images/SalesForecasting_4.5.png" width="500" /> 
+
+```python
+plt.figure(figsize=(15,8))
+corr = data[num_col].corr()
+sns.heatmap(corr,vmax=1.0,annot=True)
+plt.title('Correlation Matrix',fontsize=16)
+plt.savefig('correlation_matrix.png')
+plt.show()
+```
+<img src="images/SalesForecasting_4.6.png" width="500" /> 
