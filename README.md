@@ -225,7 +225,7 @@ lr = LinearRegression()
 lr.fit(X_train, y_train)
 lr_pred = lr.predict(X_test)
 ```
-<img src="images/SalesForecasting_6.1.png" width="500" /> 
+<img src="images/SalesForecasting_6.1.png" width="700" /> 
 
 ```python
 # Random Forest Regressor
@@ -233,7 +233,7 @@ rf = RandomForestRegressor(n_estimators=100, random_state=42)
 rf.fit(X_train, y_train)
 rf_pred = rf.predict(X_test)
 ```
-<img src="images/SalesForecasting_6.2.png" width="500" /> 
+<img src="images/SalesForecasting_6.2.png" width="700" /> 
 
 ```python
 # K-Nearest Neighbors Regressor
@@ -241,7 +241,7 @@ knn = KNeighborsRegressor(n_neighbors=5)
 knn.fit(X_train, y_train)
 knn_pred = knn.predict(X_test)
 ```
-<img src="images/SalesForecasting_6.3.png" width="500" /> 
+<img src="images/SalesForecasting_6.3.png" width="700" /> 
 
 ```python
 # XGBoost Regressor
@@ -249,7 +249,7 @@ xgb = XGBRegressor(n_estimators=100, random_state=42)
 xgb.fit(X_train, y_train)
 xgb_pred = xgb.predict(X_test)
 ```
-<img src="images/SalesForecasting_6.4.png" width="500" /> 
+<img src="images/SalesForecasting_6.4.png" width="700" /> 
 
 ### Task 7: Model Evaluation
 Evaluate model performance using metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared.
@@ -271,3 +271,25 @@ evaluate_model(y_test, rf_pred, "Random Forest Regressor")
 evaluate_model(y_test, knn_pred, "K-Nearest Neighbors Regressor")
 evaluate_model(y_test, xgb_pred, "XGBoost Regressor")
 ```
+<img src="images/SalesForecasting_7.1.png" width="600" /> 
+
+## 🛠 Skills Used
+Python, Data Cleaning, Data Preprocessing, Data Visualization, Exploratory Data Analysis, Feature Engineering, 
+
+Missing Value Imputation, Categorical Encoding, Scaling, Outlier Detection, Regression Models, Model Comparison, 
+
+Linear Regression, Random Forest Regressor, K-Nearest Neighbors Regressor, XGBoost Regressor, Model Evaluation, 
+
+Mean Absolute Error, Mean Squared Error, R-squared
+
+## 🚀 About Me
+Hi 👋, I'm Ahmed Munir
+
+A dedicated Artificial Inteligence Specialist
+
+💬 Ask me about AI, ML, DL
+
+📫 How to reach me ahnather2@gmail.com
+
+## 🔗 Links
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ahmed-munir-4b8749269/)
