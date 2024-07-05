@@ -98,13 +98,12 @@ features = pd.read_csv('features.csv')
 ```
 
 ### Task 3: Data Preprocessing
-Handle missing values, encode categorical variables, and scale numerical features.
+Handle missing values, and other data oreprocessing operations.
 
 ```python
-# Handling missing values
-data.fillna(method='ffill', inplace=True)
-stores.fillna(method='ffill', inplace=True)
-features.fillna(method='ffill', inplace=True)
+# Filling missing values
+features['CPI'].fillna(features['CPI'].median(),inplace=True)
+features['Unemployment'].fillna(features['Unemployment'].median(),inplace=True)
 
 # Encoding categorical variables
 data = pd.get_dummies(data, columns=['IsHoliday'])
@@ -115,6 +114,13 @@ stores = pd.get_dummies(stores, columns=['Type'])
 scaler = MinMaxScaler()
 data[['Weekly_Sales']] = scaler.fit_transform(data[['Weekly_Sales']])
 features[['Temperature', 'Fuel_Price', 'MarkDown1', 'MarkDown2', 'MarkDown3', 'MarkDown4', 'MarkDown5', 'CPI', 'Unemployment']] = scaler.fit_transform(features[['Temperature', 'Fuel_Price', 'MarkDown1', 'MarkDown2', 'MarkDown3', 'MarkDown4', 'MarkDown5', 'CPI', 'Unemployment']])
+
+#Outlier Detection
+agg_data = data.groupby(['Store', 'Dept']).Weekly_Sales.agg(['max', 'min', 'mean', 'median', 'std']).reset_index()
+
+# Aggregate and drop
+data['Total_MarkDown'] = data['MarkDown1']+data['MarkDown2']+data['MarkDown3']+data['MarkDown4']+data['MarkDown5']
+data.drop(['MarkDown1','MarkDown2','MarkDown3','MarkDown4','MarkDown5'], axis = 1,inplace=True)
 ```
 
 ### Task 4: Exploratory Data Analysis (EDA)
@@ -191,3 +197,77 @@ plt.savefig('correlation_matrix.png')
 plt.show()
 ```
 <img src="images/SalesForecasting_4.6.png" width="500" /> 
+
+### Task 5: Feature Engineering
+Create new features and select important ones for model training.
+
+```python
+# Creating new features
+data['Year'] = pd.DatetimeIndex(data['Date']).year
+data['Month'] = pd.DatetimeIndex(data['Date']).month
+data['Week'] = pd.DatetimeIndex(data['Date']).week
+
+# Selecting important features
+features = data[['Store', 'Dept', 'Date', 'Temperature', 'Fuel_Price', 'CPI', 'Unemployment', 'IsHoliday_0', 'IsHoliday_1']]
+```
+
+### Task 6: Model Implementation
+Split the data into training and testing sets and train multiple regression models.
+
+```python
+# Splitting the data
+X = features.drop(['Weekly_Sales'], axis=1)
+y = features['Weekly_Sales']
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Linear Regression
+lr = LinearRegression()
+lr.fit(X_train, y_train)
+lr_pred = lr.predict(X_test)
+```
+<img src="images/SalesForecasting_6.1.png" width="500" /> 
+
+```python
+# Random Forest Regressor
+rf = RandomForestRegressor(n_estimators=100, random_state=42)
+rf.fit(X_train, y_train)
+rf_pred = rf.predict(X_test)
+```
+<img src="images/SalesForecasting_6.2.png" width="500" /> 
+
+```python
+# K-Nearest Neighbors Regressor
+knn = KNeighborsRegressor(n_neighbors=5)
+knn.fit(X_train, y_train)
+knn_pred = knn.predict(X_test)
+```
+<img src="images/SalesForecasting_6.3.png" width="500" /> 
+
+```python
+# XGBoost Regressor
+xgb = XGBRegressor(n_estimators=100, random_state=42)
+xgb.fit(X_train, y_train)
+xgb_pred = xgb.predict(X_test)
+```
+<img src="images/SalesForecasting_6.4.png" width="500" /> 
+
+### Task 7: Model Evaluation
+Evaluate model performance using metrics such as Mean Absolute Error (MAE), Mean Squared Error (MSE), and R-squared.
+
+```python
+# Evaluating models
+def evaluate_model(y_test, y_pred, model_name):
+    mae = metrics.mean_absolute_error(y_test, y_pred)
+    mse = metrics.mean_squared_error(y_test, y_pred)
+    r2 = metrics.r2_score(y_test, y_pred)
+    print(f"{model_name} Performance:")
+    print(f"MAE: {mae}")
+    print(f"MSE: {mse}")
+    print(f"R2 Score: {r2}")
+    print("")
+
+evaluate_model(y_test, lr_pred, "Linear Regression")
+evaluate_model(y_test, rf_pred, "Random Forest Regressor")
+evaluate_model(y_test, knn_pred, "K-Nearest Neighbors Regressor")
+evaluate_model(y_test, xgb_pred, "XGBoost Regressor")
+```
