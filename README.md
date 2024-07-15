@@ -292,4 +292,5 @@ A dedicated Artificial Inteligence Specialist
 📫 How to reach me ahnather2@gmail.com
 
 ## 🔗 Links
+[![GitHub](https://img.shields.io/badge/github-000000?style=for-the-badge&logo=github&logoColor=white)](https://linkedin.com/in/ahnather)
 [![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ahmed-munir-4b8749269/)
