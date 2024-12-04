@@ -283,14 +283,14 @@ Linear Regression, Random Forest Regressor, K-Nearest Neighbors Regressor, XGBoo
 Mean Absolute Error, Mean Squared Error, R-squared
 
 ## 🚀 About Me
-Hi 👋, I'm Ahmed Munir
+Hi 👋, I'm Ahmad Munir
 
 A dedicated Artificial Inteligence Specialist
 
-💬 Ask me about AI, ML, DL
+💬 Ask me about AI, ML, DL, BI
 
 📫 How to reach me ahnather2@gmail.com
 
 ## 🔗 Links
-[![GitHub](https://img.shields.io/badge/github-000000?style=for-the-badge&logo=github&logoColor=white)](https://linkedin.com/in/ahnather)
-[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/ahmed-munir-4b8749269/)
+[![GitHub](https://img.shields.io/badge/github-000000?style=for-the-badge&logo=github&logoColor=white)](https://github.com/AHNather)
+[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/ahnather)
